@@ -37,7 +37,8 @@ export class Figures extends Module {
     fig.style.background = `hsl(
       ${random(0, 360)}, 
       ${random(...this.options.sat)}%, 
-      ${random(...this.options.br)}%)`
+      ${random(...this.options.br)}%)
+      `
 
     return fig
   }
