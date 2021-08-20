@@ -16,13 +16,13 @@ export class ClicksModule extends Module {
 
 	trigger() {
 		super.trigger();
-		this.counterClicks(this.#time);
+		this.#counterClicks(this.#time);
 	}
 
-	counterClicks(ms) {
+	#counterClicks(ms) {
 
-		document.body.addEventListener('click', this.onClick.bind(this));
-		document.body.addEventListener('dblclick', this.onDblclick.bind(this));
+		document.body.addEventListener('click', this.#onClick.bind(this));
+		document.body.addEventListener('dblclick', this.#onDblclick.bind(this));
 
 		setTimeout(() => {
 			this.#isTimeUp = true;
@@ -30,12 +30,12 @@ export class ClicksModule extends Module {
 		}, ms);
 	}
 
-	onClick() {
+	#onClick() {
 		if (this.#isTimeUp) return;
 		this.#count++;
 	}
 
-	onDblclick() {
+	#onDblclick() {
 		if (this.#isTimeUp) return;
 		this.#doubleCount++;
 	}
