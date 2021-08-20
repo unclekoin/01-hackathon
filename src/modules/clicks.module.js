@@ -33,6 +33,5 @@ export class ClicksModule extends Module {
 		if (this.isTimeUp) return;
 		this.twoCount++;
 	}
-
 }
 
