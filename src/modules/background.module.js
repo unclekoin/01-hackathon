@@ -2,10 +2,14 @@ import { Module } from '../core/module';
 import { random } from "../utils"
 export class BackgroundModule extends Module {
 
-changeBackgroundColor(){
-    document.body.style.backgroundColor=
-    'rgb(' + `${random(0,255)}`+
-    ',' +  `${random(0,255)}`+
-    ',' + `${random(0,255)}`+')';
+  trigger(){
+    function changeBackgroundColor(){
+      document.body.style.backgroundColor=
+      `hsl(
+        ${random(0,360)},
+        ${random(0,100)}%,
+        ${random(0,100)}%)
+      `
+    }
   }
 }
