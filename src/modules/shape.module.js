@@ -7,7 +7,7 @@ export class ShapeModule extends Module {
     width: [50, 200],
     radius: [5, 25],
     rotate: [-45, 45],
-    sat: [60, 80],
+    sat: [50, 70],
     br: [40, 60],
   }
 
