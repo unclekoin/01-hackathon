@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production'
@@ -46,6 +47,7 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({
         filename: filename('css')
       }),
+      new FaviconsWebpackPlugin('./assets/images/logo.png')
     ],
     module: {
       rules: [
@@ -62,7 +64,15 @@ module.exports = (env, argv) => {
               presets: ['@babel/preset-env']
             }
           }
-        }
+        },
+        {
+          test: /\.(png|jpe?g|gif|mp3)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
       ],
     }
   }
