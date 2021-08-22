@@ -6,7 +6,7 @@ export class TimerModule extends Module {
     swal("Put your time in seconds here:", {
       content: "input",
     }).then((value) => {
-      if (!value || value > 60) {
+      if (!Number(value) || value > 60) {
         swal("Your time is wrong");
       } else {
         const timeEl = document.createElement("div");
