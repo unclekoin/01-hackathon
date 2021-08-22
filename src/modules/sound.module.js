@@ -1,16 +1,16 @@
 import { Module } from "../core/module";
 import { random } from "../utils";
-import {sounds} from '../db/sounds'
 
 const cache = {}
 
 function importAll(r) {
-  r.keys().forEach((key) => (cache[key.match(/\w+/)] = r(key)));
+  r.keys().forEach((key) => (cache[key.match(/\w+/)] = r(key)))
 }
 
 importAll(require.context('../assets/sounds/', true, /\.mp3$/))
 
 function getSoundSrc() {
+  const sounds = Object.keys(cache)
   return sounds[random(0, sounds.length - 1)];
 }
 
