@@ -6,8 +6,8 @@ export class BackgroundModule extends Module {
     document.body.style.backgroundColor=
       `hsl(
       ${random(0,360)},
-      ${random(0,100)}%,
-      ${random(0,100)}%)
+      ${random(30,80)}%,
+      ${random(70,100)}%)
     `
   }
 
