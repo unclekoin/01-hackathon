@@ -1,17 +1,17 @@
-import { Module } from "../core/module";
-import swal from "sweetalert";
+import { Module } from '../core/module';
+import swal from 'sweetalert';
 
 export class TimerModule extends Module {
   trigger() {
-    swal("Put your time in seconds here:", {
-      content: "input",
+    swal('Enter time in seconds:', {
+      content: 'input',
     }).then((value) => {
       if (!Number(value) || value > 60) {
-        swal("Your time is wrong");
+        swal('Your time is wrong');
       } else {
-        const timeEl = document.createElement("div");
-        const body = document.querySelector("body");
-        timeEl.className = "timeEl";
+        const timeEl = document.createElement('div');
+        const body = document.querySelector('body');
+        timeEl.className = `module-${ this.type }`;;
         body.append(timeEl);
 
         setInterval(decreaseTime, 1000);
@@ -22,13 +22,14 @@ export class TimerModule extends Module {
           } else {
             let current = --value;
             if (current < 10) {
-              current = `0${current}`;
+              current = `0${ current }`;
             }
             setTime(current);
           }
         }
+
         function setTime(value) {
-          timeEl.innerHTML = `00:${value}`;
+          timeEl.innerHTML = `00:${ value }`;
         }
 
         function finishTimer() {

@@ -1,9 +1,9 @@
-import { Module } from '@/core/module'
+import { Module } from '@/core/module';
 
 const TIME = 10000;
 
 export class ClicksModule extends Module {
-  #container
+  #container;
   #isTimeUp;
   #count;
   #doubleCount;
@@ -11,9 +11,9 @@ export class ClicksModule extends Module {
   #displayValues;
   #displayText;
   #timeEl;
-  #timerId
+  #timerId;
   #countDown;
-  #box
+  #box;
 
   constructor(type, text) {
     super(type, text);
@@ -51,7 +51,7 @@ export class ClicksModule extends Module {
 
     setTimeout(() => {
       this.#isTimeUp = true;
-      this.#displayText.textContent =`Time is over. Result: ${this.#count} clicks in ${this.#time / 1000} seconds, including ${this.#doubleCount} double clicks.`;
+      this.#displayText.textContent = `Time is over. Result: ${ this.#count } clicks in ${ this.#time / 1000 } seconds, including ${ this.#doubleCount } double clicks.`;
     }, ms);
   }
 
@@ -63,20 +63,20 @@ export class ClicksModule extends Module {
   }
 
   getText() {
-    return `Result: ${this.#count} single clicks, including ${this.#doubleCount} double clicks`;
+    return `Result: ${ this.#count } single clicks, including ${ this.#doubleCount } double clicks`;
   }
 
   #onClick = () => {
     if (this.#isTimeUp) return;
     this.#count++;
     this.#displayText.textContent = this.getText();
-  }
+  };
 
   #onDblclick = () => {
     if (this.#isTimeUp) return;
     this.#doubleCount++;
     this.#displayText.textContent = this.getText();
-  }
+  };
 
   #close() {
     this.#box.remove();
@@ -84,9 +84,9 @@ export class ClicksModule extends Module {
   }
 
   #backwardTime() {
-    this.#timeEl.className = 'timeEl';
+    this.#timeEl.className = 'module-timer';
     this.#box.append(this.#timeEl);
-    this.#timerId = setInterval(this.#decreaseTime,10);
+    this.#timerId = setInterval(this.#decreaseTime, 10);
   }
 
 
@@ -103,13 +103,13 @@ export class ClicksModule extends Module {
     let sec = tithe.substr(-4, 2);
     let mlSec = tithe.substr(-2, 2);
 
-    if (tithe === '0000'){
+    if (tithe === '0000') {
       clearInterval(this.#timerId);
     }
     this.#setTime(sec, mlSec);
-  }
+  };
 
   #setTime = (sec, ms) => {
-    this.#timeEl.textContent = `${sec}:${ms}`
-  }
+    this.#timeEl.textContent = `${ sec }:${ ms }`;
+  };
 }

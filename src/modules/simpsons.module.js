@@ -1,4 +1,4 @@
-import { Module } from "../core/module";
+import { Module } from '../core/module';
 
 export class SimpsonsModule extends Module {
   #el;
@@ -6,30 +6,31 @@ export class SimpsonsModule extends Module {
 
   constructor(type, text) {
     super(type, text);
-    this.#body = document.querySelector("body");
-    this.#el = document.createElement("div");
+    this.#body = document.querySelector('body');
+    this.#el = document.createElement('div');
     this.#el.dataset.type = this.type;
-    this.#el.className = `module-${this.type}`;
+    this.#el.className = `module-${ this.type }`;
     this.#body.append(this.#el);
     this.destroy(this.#el, this.type);
   }
+
   trigger() {
-    const sympsonsUrl = "https://thesimpsonsquoteapi.glitch.me/quotes";
+    const sympsonsUrl = 'https://thesimpsonsquoteapi.glitch.me/quotes';
 
     const createSympsonQuoteElement = (quote) => {
-      const sympsonQuoteElement = document.createElement("div");
+      const sympsonQuoteElement = document.createElement('div');
       sympsonQuoteElement.textContent = quote;
 
       return sympsonQuoteElement;
     };
     const createSympsonNameElement = (character) => {
-      const sympsonNameElement = document.createElement("div");
+      const sympsonNameElement = document.createElement('div');
       sympsonNameElement.textContent = character;
 
       return sympsonNameElement;
     };
     const createSympsonImageElement = (image) => {
-      const sympsonImageElement = document.createElement("img");
+      const sympsonImageElement = document.createElement('img');
       sympsonImageElement.src = image;
       return sympsonImageElement;
     };
@@ -38,8 +39,8 @@ export class SimpsonsModule extends Module {
       try {
         const response = await fetch(sympsonsUrl);
         if (!response.ok) {
-          dataContainer.textContent = "There is an error..sorry";
-          throw new Error("There is an error...sorry");
+          dataContainer.textContent = 'There is an error..sorry';
+          throw new Error('There is an error...sorry');
         } else {
           const result = await response.json();
           const data = [];
@@ -57,7 +58,7 @@ export class SimpsonsModule extends Module {
           });
         }
       } catch (error) {
-        console.log("loading error");
+        console.log('loading error');
       } finally {
       }
     };

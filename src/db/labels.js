@@ -8,4 +8,4 @@ export const labels = {
   CalculatorModule: '📟 Simple calculator',
   TimerModule: '⏱  Shall we start the timer?',
   SimpsonsModule: '🤦 And now Simpsons!',
-}
+};
