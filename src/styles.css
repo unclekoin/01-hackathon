@@ -91,10 +91,11 @@ body {
     top: 50%;
     left: 55%;
     transform: translate(-50%, -50%);
-    width: fit-content;
+    width: 750px;
 }
 
 .module-clicks {
+    text-align: center;
     padding: 25px 25px 25px 60px;
     color: #f5f6fa;
     text-align: right;
