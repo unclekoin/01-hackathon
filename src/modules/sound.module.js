@@ -1,6 +1,6 @@
 import { Module } from "../core/module";
 import { random } from "../utils";
-import { sounds } from '../db/sounds'
+import {sounds} from '../db/sounds'
 
 const cache = {}
 

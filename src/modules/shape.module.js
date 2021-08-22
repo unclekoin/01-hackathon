@@ -7,14 +7,23 @@ export class ShapeModule extends Module {
     width: [50, 200],
     radius: [5, 25],
     rotate: [-45, 45],
-    sat: [60, 80],
+    sat: [50, 70],
     br: [40, 60],
+  }
+
+  #el
+
+  constructor(text, type) {
+    super(text, type)
+
+    this.#el = this.createFig()
+    this.destroy(this.#el, this.type);
   }
 
   createFig = () => {
 
     const fig = document.createElement('div')
-    fig.type = this.type;
+    fig.dataset.type = this.type;
     fig.className = `module-${ this.type }`
     fig.classList.add('figure')
 
@@ -46,20 +55,7 @@ export class ShapeModule extends Module {
     return fig
   }
 
-  deleteFig() {
-    document.querySelector(`.figure`).remove()
-  }
-
-/*   destroy() {
-    this.deleteFig()
-  } */
-
   trigger() {
-    if (document.querySelector(`.figure`)) {
-      this.deleteFig()
-    }
-    
-    const fig = this.createFig()
-    document.body.append(fig)
+    document.body.append(this.#el)
   }
 }
